@@ -160,7 +160,7 @@ class OtobusYonetimSistemi:
                     print("\nYolcu bulundu: {}".format(yolcu))
 
                     while True:
-                        secim = input("1-) Yolcuyu Sil\n2-) Yolcuyu Güncelle\nSeçiminizi yapın: ")
+                        secim = input("1-) Yolcuyu Sil\n2-) Yolcuyu Güncelle\n3-) Çıkış\nSeçiminizi yapın:\n ")
                         if secim == '1':
                             if otobus_node.YolcuSil(ad, soyad):
                                 print("{} {} yolcu başarıyla silindi.".format(ad, soyad))
@@ -173,6 +173,9 @@ class OtobusYonetimSistemi:
                                 print("\nYolcu başarıyla güncellendi: {} {}".format(yeni_ad, yeni_soyad))
                             else:
                                 print("Yolcu bulunamadı.")
+                        
+                        elif secim == '3':
+                            break
                         else:
                             print("Geçerli bir seçim yapın.")
         print("Yolcu bulunamadı.")
