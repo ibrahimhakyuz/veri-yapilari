@@ -158,46 +158,41 @@ class OtobusYonetimSistemi:
             for yolcu in otobus_node.yolcular:
                 if yolcu.ad == ad and yolcu.soyad == soyad:
                     print("\nYolcu bulundu: {}".format(yolcu))
-
-                    while True:
-                        secim = input("1-) Yolcuyu Sil\n2-) Yolcuyu Güncelle\n3-) Çıkış\nSeçiminizi yapın:\n ")
-                        if secim == '1':
-                            if otobus_node.YolcuSil(ad, soyad):
-                                print("{} {} yolcu başarıyla silindi.".format(ad, soyad))
-                            else:
-                                print("Yolcu bulunamadı.")
-                        elif secim == '2':
-                            yeni_ad = input("\nYeni adı girin: ")
-                            yeni_soyad = input("Yeni soyadı girin: ")
-                            if otobus_node.YolcuGuncelle(ad, soyad, yeni_ad, yeni_soyad):
-                                print("\nYolcu başarıyla güncellendi: {} {}".format(yeni_ad, yeni_soyad))
-                            else:
-                                print("Yolcu bulunamadı.")
-                        
-                        elif secim == '3':
-                            break
-                        else:
-                            print("Geçerli bir seçim yapın.")
-        print("Yolcu bulunamadı.")
+                    secim = input("1-) Yolcuyu Sil\n2-) Yolcuyu Güncelle\n3-) Çıkış\nSeçiminizi yapın: ")
+                    if secim == '1':
+                        if otobus_node.YolcuSil(ad, soyad):
+                            print("{} {} yolcu başarıyla silindi.".format(ad, soyad))
+                            return  
+                    elif secim == '2':
+                        yeni_ad = input("\nYeni adı girin: ")
+                        yeni_soyad = input("Yeni soyadı girin: ")
+                        otobus_node.YolcuGuncelle(ad, soyad, yeni_ad, yeni_soyad)
+                        print("\nYolcu başarıyla güncellendi: {} {}".format(yeni_ad, yeni_soyad))
+                        return  
+                    elif secim == '3':
+                        return  
+                    else:
+                        print("Geçerli bir seçim yapın.")
+            print("Yolcu bulunamadı.")  
 
 
 def tarih_belirleme():
     while True:
-        gun = int(input("Otobüs tarihin için gün girin: "))
+        gun = int(input("Otobüs tarihi için gün girin: "))
         if 1 <= gun <= 31:
             break
         else:
             print("Lütfen geçerli bir gün girin.")
             
     while True:
-        ay = int(input("Otobüs tarihin için ay girin: "))
+        ay = int(input("Otobüs tarihi için ay girin: "))
         if 1 <= ay <= 12:
             break
         else:
             print("Lütfen geçerli bir ay girin.")
             
     while True:
-        yil = int(input("Otobüs tarihin için yıl girin: "))
+        yil = int(input("Otobüs tarihi için yıl girin: "))
         if yil >= 2024:
             break
         else:
